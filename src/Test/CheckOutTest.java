@@ -23,24 +23,34 @@ public class CheckOutTest extends TestBase{
 	Properties prop;
 @Test
 public void CheckOutInformation() throws IOException, InterruptedException {
+	
+	
 	CheckOutInformation CheckOutInformation=PageFactory.initElements(driver, CheckOutInformation.class);  
-
- driver.get(prop.getProperty("url"));
- Thread.sleep(2000);
- 
- CheckOutInformation.EnterFirstname(prop.getProperty("Firstname"));
+	 driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	 
+	 
+	 
+	 
+	 String ActualHeader =  CheckOutInformation.VerifyCHECKOUTINFORMATIONHeader();
+	  
+	    String ExpectedHeader = "CHECKOUT: YOUR INFORMATION";
+	     SoftAssert softAssertion= new SoftAssert();
+	    
+	   softAssertion.assertEquals(ActualHeader, ExpectedHeader, "Sauce Labs application landed in Check Out Your Information page successfully");
+	 softAssertion.assertAll();
+	
+	
+	CheckOutInformation.EnterFirstname(prop.getProperty("Firstname"));
  CheckOutInformation.EnterLastname(prop.getProperty("Lastname"));
  CheckOutInformation.EnterZipcode(prop.getProperty("Zipcode"));
+ CheckOutInformation.SelectContinueButton();
  
- driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
- 
-String Expected = "Swag Labs";
-String Actual = driver.getTitle(); 
 
-System.out.println(Actual); 
-SoftAssert softAssertion= new SoftAssert();
-softAssertion.assertEquals(Actual, Expected, "Sauce Labs application logged in successfully");
-softAssertion.assertAll();
+ 
+ 
+	
+
+
 }
 
 

@@ -25,18 +25,16 @@ import org.testng.annotations.AfterMethod;
   @Test
   public void YourCart() throws IOException, InterruptedException {
 	  YourCart YourCart=PageFactory.initElements(driver, YourCart.class);  
-	     
+	  driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        String ExpectedHeader = "YOUR CART";
+	    String ActualHeader = YourCart.VerifyYourCartHeader();
+	    SoftAssert softAssertion= new SoftAssert();
+	   softAssertion.assertEquals(ActualHeader, ExpectedHeader, "Sauce Labs application landed in Your Cart page successfully");
+	 softAssertion.assertAll();
+	  
 	     YourCart.SelectCheckOutButton();
 	     
-	     driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-	     
-	    String Expected = "Swag Labs";
-	    String Actual = driver.getTitle(); 
-	    
-	 System.out.println(Actual); 
-	 SoftAssert softAssertion= new SoftAssert();
-	 softAssertion.assertEquals(Actual, Expected, "Sauce Labs application came to your check out page successfully");
-	 softAssertion.assertAll();
+
   }
  
   

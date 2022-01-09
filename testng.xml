@@ -3,10 +3,14 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="Test.CheckOutTest"/>
+      <class name="Test.TestBase"/>
       <class name="Test.SauceLoginTest"/>
       <class name="Test.ProductsAddToCartTest"/>
-      <class name="Test.YourCartTest"/>   
+      <class name="Test.YourCartTest"/> 
+      <class name="Test.CheckOutTest"/> 
+        <class name="Test.CheckOutOverViewTest"/> 
+  <class name="Test.CheckOutCompleteTest"/> 
+       
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -37,7 +37,6 @@ import org.testng.annotations.AfterMethod;
 	    String Expected = "Swag Labs";
 	    String Actual = driver.getTitle(); 
 	    
-	 System.out.println(Actual); 
 	 SoftAssert softAssertion= new SoftAssert();
 	 softAssertion.assertEquals(Actual, Expected, "Sauce Labs application logged in successfully");
 	 softAssertion.assertAll();

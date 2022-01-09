@@ -30,7 +30,12 @@ import org.testng.annotations.AfterMethod;
   public void ProductsToAddCartTest() throws IOException, InterruptedException {
 	  
 	  Products ProductsAdd=PageFactory.initElements(driver, Products.class);  
-	     
+	  driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	    String ExpectedHeader = "PRODUCTS";
+	    String ActualHeader = ProductsAdd.VerifyProductHeader();
+	    SoftAssert softAssertion= new SoftAssert();
+	   softAssertion.assertEquals(ActualHeader, ExpectedHeader, "Sauce Labs application landed in Product page successfully");
+	 softAssertion.assertAll();
 	  
 	  ProductsAdd.AddToCartBackpack();
 	  ProductsAdd.AddToCartBikeLight();
@@ -38,23 +43,17 @@ import org.testng.annotations.AfterMethod;
 	String ActualAddedCount =  ProductsAdd.AddedCartCount();
 
 	     
-	     driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	   
 	     
 	    String ExpectedAddedCount = "2";
 	    
-	 System.out.println(ActualAddedCount); 
-	 SoftAssert softAssertion= new SoftAssert();
-	 softAssertion.assertEquals(ActualAddedCount, ExpectedAddedCount, "Two products addedd successfully in cart");
+	 
+	 softAssertion.assertEquals(ActualAddedCount, ExpectedAddedCount, "Two products added successfully in cart");
 	 softAssertion.assertAll();
 	 
 	  ProductsAdd.SelectCartButton();
 	  
-	  String Expected = "Swag Labs";
-	    String Actual = driver.getTitle(); 
-	    
-	
-	 softAssertion.assertEquals(Actual, Expected, "Sauce Labs application came to your cart's page successfully");
-	 softAssertion.assertAll();
+
 	 
   }
  

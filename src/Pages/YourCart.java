@@ -13,12 +13,19 @@ public class YourCart {
 	
 	@FindBy(xpath="//button[@id='checkout']")
 	public WebElement SelectCheckOutButton;
-
+	@FindBy(xpath="//div[@id='header_container']/div[2]/span")
+	public WebElement YourCartHeader;
 	
 	public void SelectCheckOutButton()
 	{
 		SelectCheckOutButton.click();
 	}
+	public String VerifyYourCartHeader()
+	{
+		return YourCartHeader.getText();
+	}
+	
+	
 }
 
 	

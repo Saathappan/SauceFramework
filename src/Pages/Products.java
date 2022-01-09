@@ -21,7 +21,8 @@ public class Products {
 	public WebElement AddedCartCount;
 	@FindBy(xpath="//div[@id='shopping_cart_container']/a")
 	public WebElement SelectCartButton;
-	
+	@FindBy(xpath="//div[@id='header_container']/div[2]/span")
+	public WebElement ProductHeader;
 	public void AddToCartBackpack()
 	{
 		AddToCartBackpack.click();
@@ -47,6 +48,11 @@ public class Products {
 	{
 		SelectCartButton.click();
 	}
+	public String VerifyProductHeader()
+	{
+		return ProductHeader.getText();
+	}
 	
+
 
 }
